@@ -10,7 +10,7 @@
 
 - Clone this repo
 - npm install
-- create .env.local file and add github api OAuth
+- create .env.local file and add github OAuth
 - npm start
 - Open http://localhost:3000 to view it in the browser.
 
