@@ -1,15 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Spinner from "../layout/Spinner";
 import { Link } from "react-router-dom";
 import Repos from "../repos/Repos";
+import GithubContext from "../../context/github/githubContext";
 
-const User = ({ user, loading, getUser, repos, getUserRepos, match }) => {
+const User = ({ match }) => {
+  const githubContext = useContext(GithubContext);
+  const { getUser, loading, user, repos, getUserRepos } = useContext(
+    GithubContext
+  );
+
   useEffect(() => {
     getUser(match.params.login);
     getUserRepos(match.params.login);
     // eslint-disable-next-line
   }, []);
-
   const {
     name,
     avatar_url,
@@ -22,7 +27,6 @@ const User = ({ user, loading, getUser, repos, getUserRepos, match }) => {
     following,
     public_repos,
     public_gists,
-    hireable,
     company,
   } = user;
 
